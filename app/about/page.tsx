@@ -39,11 +39,6 @@ export default function AboutPage() {
             family of tool-kit sites. Yaro Labs builds custom internal tools and backoffice
             systems for SaaS teams.
           </p>
-          <h2>Tech stack</h2>
-          <p>
-            Next.js 15 App Router · TypeScript · Tailwind CSS v4 · DM Serif Display ·
-            DM Sans · Geist Mono. Hosted on Vercel.
-          </p>
         </div>
       </div>
     </div>

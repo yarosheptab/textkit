@@ -54,14 +54,6 @@ export default function HomePage() {
             borderRadius: "var(--radius)", padding: "10px 22px",
             cursor: "pointer", textDecoration: "none", marginRight: "10px",
           }}>Browse tools</a>
-          <a href="https://github.com/yaro-labs/textkit"
-            target="_blank" rel="noopener noreferrer" style={{
-              display: "inline-block", background: "none", color: "var(--muted-fg)",
-              fontFamily: "var(--font-sans), system-ui, sans-serif",
-              fontSize: "14px", fontWeight: 500, border: "1px solid var(--border)",
-              borderRadius: "var(--radius)", padding: "9px 18px",
-              cursor: "pointer", textDecoration: "none",
-            }}>View source ↗</a>
         </div>
 
         {/* Right — stat panel */}
