@@ -32,8 +32,7 @@ export default function MarkdownPage() {
       name="Markdown Preview"
       description="Type Markdown on the left, see rendered HTML on the right. Live, as you type."
     >
-      <div style={{
-        display: "grid", gridTemplateColumns: "1fr 1fr",
+      <div className="split-pane" style={{
         minHeight: "calc(100vh - 160px)",
       }}>
         <div style={{ padding: "20px 24px", display: "flex", flexDirection: "column" }}>
@@ -51,8 +50,8 @@ export default function MarkdownPage() {
             }}
           />
         </div>
-        <div style={{
-          padding: "20px 24px", borderLeft: "1px solid var(--border)", overflowY: "auto",
+        <div className="split-pane-right" style={{
+          padding: "20px 24px", overflowY: "auto",
         }}>
           <PaneLabel>Preview</PaneLabel>
           <div

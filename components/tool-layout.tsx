@@ -41,9 +41,9 @@ export function ToolLayout({ slug, name, description, children }: ToolLayoutProp
 
 export function SplitPane({ left, right }: { left: React.ReactNode; right: React.ReactNode }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "340px" }}>
+    <div className="split-pane" style={{ minHeight: "340px" }}>
       <div style={{ padding: "20px 24px" }}>{left}</div>
-      <div style={{ padding: "20px 24px", borderLeft: "1px solid var(--border)" }}>{right}</div>
+      <div className="split-pane-right" style={{ padding: "20px 24px" }}>{right}</div>
     </div>
   )
 }

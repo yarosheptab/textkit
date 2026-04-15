@@ -9,7 +9,7 @@ export function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href)
 
   return (
-    <nav style={{
+    <nav className="navbar-root" style={{
       display: "flex", alignItems: "center", justifyContent: "space-between",
       padding: "0 28px", height: "56px",
       borderBottom: "1px solid var(--border)", background: "var(--surface)",
@@ -37,8 +37,8 @@ export function Navbar() {
         ))}
       </div>
 
-      <div style={{
-        display: "flex", alignItems: "center", gap: "8px",
+      <div className="navbar-search" style={{
+        alignItems: "center", gap: "8px",
         background: "var(--muted)", border: "1px solid var(--border)",
         borderRadius: "6px", padding: "5px 12px", cursor: "text",
       }}>

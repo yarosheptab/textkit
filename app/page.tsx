@@ -14,10 +14,9 @@ export default function HomePage() {
       <Navbar />
 
       {/* Hero */}
-      <section style={{
+      <section className="hero-grid" style={{
         padding: "64px 28px 52px", borderBottom: "1px solid var(--border)",
-        background: "var(--surface)", display: "grid",
-        gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center",
+        background: "var(--surface)",
       }}>
         {/* Left */}
         <div>
@@ -29,7 +28,7 @@ export default function HomePage() {
             borderRadius: "20px", padding: "3px 10px", marginBottom: "20px",
           }}>Text utilities</div>
 
-          <h1 style={{
+          <h1 className="hero-h1" style={{
             fontFamily: "var(--font-serif), Georgia, serif",
             fontSize: "52px", fontWeight: 400, color: "var(--fg)",
             lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: "18px",
@@ -57,7 +56,7 @@ export default function HomePage() {
         </div>
 
         {/* Right — stat panel */}
-        <div style={{
+        <div className="hero-stat-panel" style={{
           display: "flex", flexDirection: "column",
           border: "1px solid var(--border)", borderRadius: "10px",
           overflow: "hidden", background: "var(--muted)", minWidth: "160px",
@@ -67,7 +66,7 @@ export default function HomePage() {
             { n: "0", label: "Sign-ups required" },
             { n: "100%", label: "In-browser" },
           ].map(({ n, label }, i, arr) => (
-            <div key={label} style={{
+            <div className="hero-stat-item" key={label} style={{
               padding: "16px 20px",
               borderBottom: i < arr.length - 1 ? "1px solid var(--border)" : "none",
             }}>
@@ -100,9 +99,7 @@ export default function HomePage() {
           }}>{TOOLS.length} tools</span>
         </div>
 
-        <div style={{
-          display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px",
-        }}>
+        <div className="tool-grid">
           {TOOLS.map((tool) => <ToolCard key={tool.slug} tool={tool} />)}
         </div>
       </section>

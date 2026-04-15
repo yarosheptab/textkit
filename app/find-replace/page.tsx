@@ -62,20 +62,21 @@ export default function FindReplacePage() {
       name="Find & Replace"
       description="Search and replace text with plain strings or regular expressions. Highlights all matches."
     >
-      <div style={{
+      <div className="fr-toolbar" style={{
         background: "var(--surface)", borderBottom: "1px solid var(--border)",
-        padding: "0 28px", display: "flex", alignItems: "center", gap: "16px", height: "44px",
+        padding: "0 28px",
       }}>
         <input
           type="text"
           value={find}
           onChange={(e) => setFind(e.target.value)}
           placeholder={useRegex ? "Regex pattern..." : "Find..."}
+          className="fr-input"
           style={{
             fontFamily: "var(--font-sans), system-ui, sans-serif", fontSize: "12px",
             background: "var(--muted)", border: "1px solid var(--border)",
             borderRadius: "6px", padding: "4px 10px", color: "var(--fg)",
-            outline: "none", width: "200px",
+            outline: "none",
           }}
         />
         <input
@@ -83,11 +84,12 @@ export default function FindReplacePage() {
           value={replace}
           onChange={(e) => setReplace(e.target.value)}
           placeholder="Replace with..."
+          className="fr-input"
           style={{
             fontFamily: "var(--font-sans), system-ui, sans-serif", fontSize: "12px",
             background: "var(--muted)", border: "1px solid var(--border)",
             borderRadius: "6px", padding: "4px 10px", color: "var(--fg)",
-            outline: "none", width: "200px",
+            outline: "none",
           }}
         />
         <label style={{
@@ -112,7 +114,7 @@ export default function FindReplacePage() {
         )}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "340px" }}>
+      <div className="split-pane" style={{ minHeight: "340px" }}>
         <div style={{ padding: "20px 24px" }}>
           <PaneLabel>Input</PaneLabel>
           <Textarea
@@ -148,7 +150,7 @@ export default function FindReplacePage() {
           </div>
         </div>
 
-        <div style={{ padding: "20px 24px", borderLeft: "1px solid var(--border)" }}>
+        <div className="split-pane-right" style={{ padding: "20px 24px" }}>
           <PaneLabel>Output</PaneLabel>
           <div style={{
             background: "var(--muted)", border: "1px solid var(--border)",

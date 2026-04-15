@@ -1,5 +1,106 @@
 @import "tailwindcss";
 
+/* ── Responsive layout helpers ── */
+
+/* Navbar: hide search widget on mobile */
+.navbar-search {
+  display: flex;
+}
+@media (max-width: 600px) {
+  .navbar-search {
+    display: none;
+  }
+  .navbar-root {
+    padding: 0 16px !important;
+  }
+}
+
+/* Hero section: stack on mobile */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 700px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .hero-stat-panel {
+    flex-direction: row !important;
+    overflow: hidden;
+  }
+  .hero-stat-item {
+    flex: 1;
+    border-bottom: none !important;
+    border-right: 1px solid var(--border);
+  }
+  .hero-stat-item:last-child {
+    border-right: none !important;
+  }
+  .hero-h1 {
+    font-size: 38px !important;
+  }
+}
+
+/* Tool grid: 3 cols → 2 cols → 1 col */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+@media (max-width: 900px) {
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SplitPane: side-by-side → stacked on mobile */
+.split-pane {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 340px;
+}
+.split-pane-right {
+  border-left: 1px solid var(--border);
+}
+@media (max-width: 700px) {
+  .split-pane {
+    grid-template-columns: 1fr;
+  }
+  .split-pane-right {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+}
+
+/* Find & Replace toolbar: wrap on mobile */
+.fr-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 44px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.fr-input {
+  width: 200px;
+}
+@media (max-width: 700px) {
+  .fr-input {
+    width: 100%;
+    flex: 1 1 140px;
+  }
+}
+
 :root {
   --bg:             #faf9f7;
   --surface:        #ffffff;
@@ -15,11 +116,16 @@
   --radius:         8px;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .prose h1, .prose h2, .prose h3 {
