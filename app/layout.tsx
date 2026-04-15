@@ -23,20 +23,49 @@ const geistMono = Geist_Mono({
   variable: "--font-mono",
 })
 
+const siteTitle = "textkit — Free text utilities for writers & developers"
+const siteDescription =
+  "Text utilities — Case Converter, Word Count, Markdown Preview, Slug Generator, Find & Replace, Lorem Ipsum. Six focused, browser-based tools. No sign-up required."
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://textkit.yaro-labs.com"),
   title: {
-    default: "textkit — Free text utilities for writers & developers",
+    default: siteTitle,
     template: "%s | textkit",
   },
-  description:
-    "Six focused, browser-based text tools: case converter, word count, Markdown preview, slug generator, find & replace, and lorem ipsum. No sign-up required.",
+  description: siteDescription,
+  keywords: [
+    "text tools",
+    "case converter",
+    "word count",
+    "markdown preview",
+    "slug generator",
+    "find and replace",
+    "lorem ipsum",
+    "text utilities",
+    "browser text tools",
+  ],
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: "https://textkit.yaro-labs.com",
     siteName: "textkit",
     locale: "en_US",
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: "https://textkit.yaro-labs.com/og/home.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["https://textkit.yaro-labs.com/og/home.png"],
   },
 }
 
@@ -47,6 +76,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9C73GBJ" height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
         </noscript>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "textkit",
+              "url": "https://textkit.yaro-labs.com",
+              "description": siteDescription,
+              "publisher": {
+                "@type": "Organization",
+                "name": "Yaro Labs",
+                "url": "https://yaro-labs.com",
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://textkit.yaro-labs.com/blog?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
         {children}
         <Footer />
         <CookieConsent />

@@ -1,83 +1,54 @@
-"use client"
+import type { Metadata } from "next"
+import SlugGenerator from "./SlugGenerator"
 
-import { useState } from "react"
-import {
-  ToolLayout, SplitPane, PaneLabel, PaneButton, Textarea, OutputBox,
-} from "@/components/tool-layout"
+export const metadata: Metadata = {
+  title: "Slug Generator",
+  description:
+    "Convert any text into a URL-friendly slug. Removes special characters, lowercases, and replaces spaces with hyphens.",
+  keywords: [
+    "slug generator",
+    "URL slug",
+    "generate slug",
+    "URL-friendly string",
+    "permalink generator",
+  ],
+  openGraph: {
+    title: "Slug Generator",
+    description:
+      "Convert any text into a URL-friendly slug. Removes special characters, lowercases, and replaces spaces with hyphens.",
+    url: "https://textkit.yaro-labs.com/slug",
+    images: [{ url: "https://textkit.yaro-labs.com/og/home.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Slug Generator",
+    description:
+      "Convert any text into a URL-friendly slug. Removes special characters, lowercases, and replaces spaces with hyphens.",
+    images: ["https://textkit.yaro-labs.com/og/home.png"],
+  },
+}
 
-function toSlug(str: string): string {
-  return str
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/[\s]+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Slug Generator",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Web",
+  "url": "https://textkit.yaro-labs.com/slug",
+  "description":
+    "Convert any text into a URL-friendly slug. Removes special characters, lowercases, and replaces spaces with hyphens.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "Yaro Labs", "url": "https://yaro-labs.com" },
 }
 
 export default function SlugPage() {
-  const [input, setInput] = useState("")
-  const [copied, setCopied] = useState(false)
-  const slug = toSlug(input)
-
-  const copy = () => {
-    navigator.clipboard.writeText(slug)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 1500)
-  }
-
   return (
-    <ToolLayout
-      slug="slug"
-      name="Slug Generator"
-      description="Turn any string into a clean URL slug. Handles Unicode, spaces, and special characters."
-    >
-      <SplitPane
-        left={
-          <>
-            <PaneLabel>Input</PaneLabel>
-            <Textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="My Amazing Blog Post Title!"
-              spellCheck={false}
-              style={{ minHeight: "120px" }}
-            />
-            <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
-              <PaneButton
-                variant="primary"
-                onClick={async () => {
-                  const t = await navigator.clipboard.readText()
-                  setInput(t)
-                }}
-              >Paste</PaneButton>
-              <PaneButton onClick={() => setInput("")}>Clear</PaneButton>
-            </div>
-          </>
-        }
-        right={
-          <>
-            <PaneLabel>Slug</PaneLabel>
-            <OutputBox>
-              <span style={{
-                fontFamily: "var(--font-mono), monospace", fontSize: "14px",
-                color: slug ? "var(--fg)" : "var(--subtle)", wordBreak: "break-all",
-              }}>
-                {slug || "slug-will-appear-here"}
-              </span>
-            </OutputBox>
-            {slug && (
-              <div style={{ marginTop: "10px" }}>
-                <PaneButton variant="primary" onClick={copy}>
-                  {copied ? "Copied!" : "Copy slug"}
-                </PaneButton>
-              </div>
-            )}
-          </>
-        }
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </ToolLayout>
+      <SlugGenerator />
+    </>
   )
 }

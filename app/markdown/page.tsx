@@ -1,66 +1,54 @@
-"use client"
+import type { Metadata } from "next"
+import MarkdownPreview from "./MarkdownPreview"
 
-import { useState, useEffect } from "react"
-import { ToolLayout, PaneLabel } from "@/components/tool-layout"
+export const metadata: Metadata = {
+  title: "Markdown Preview",
+  description:
+    "Write Markdown and see a live rendered preview side by side. Supports GFM — tables, code blocks, and more.",
+  keywords: [
+    "markdown preview",
+    "markdown editor",
+    "markdown renderer",
+    "live markdown",
+    "GFM preview",
+  ],
+  openGraph: {
+    title: "Markdown Preview",
+    description:
+      "Write Markdown and see a live rendered preview side by side. Supports GFM — tables, code blocks, and more.",
+    url: "https://textkit.yaro-labs.com/markdown",
+    images: [{ url: "https://textkit.yaro-labs.com/og/home.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Markdown Preview",
+    description:
+      "Write Markdown and see a live rendered preview side by side. Supports GFM — tables, code blocks, and more.",
+    images: ["https://textkit.yaro-labs.com/og/home.png"],
+  },
+}
 
-const DEFAULT_MD = `# Hello, textkit
-
-Type **Markdown** here and see it rendered on the right.
-
-- Supports *italic* and **bold**
-- Lists and [links](https://textkit.yaro-labs.com)
-- \`inline code\` and fenced blocks
-
-\`\`\`js
-console.log("Hello, world!")
-\`\`\`
-`
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Markdown Preview",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Web",
+  "url": "https://textkit.yaro-labs.com/markdown",
+  "description":
+    "Write Markdown and see a live rendered preview side by side. Supports GFM — tables, code blocks, and more.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "Yaro Labs", "url": "https://yaro-labs.com" },
+}
 
 export default function MarkdownPage() {
-  const [input, setInput] = useState(DEFAULT_MD)
-  const [html, setHtml] = useState("")
-
-  useEffect(() => {
-    import("marked").then(({ marked }) => {
-      Promise.resolve(marked(input)).then(setHtml)
-    })
-  }, [input])
-
   return (
-    <ToolLayout
-      slug="markdown"
-      name="Markdown Preview"
-      description="Type Markdown on the left, see rendered HTML on the right. Live, as you type."
-    >
-      <div className="split-pane" style={{
-        minHeight: "calc(100vh - 160px)",
-      }}>
-        <div style={{ padding: "20px 24px", display: "flex", flexDirection: "column" }}>
-          <PaneLabel>Markdown</PaneLabel>
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            spellCheck={false}
-            style={{
-              flex: 1, width: "100%", minHeight: "400px",
-              background: "var(--muted)", border: "1px solid var(--border)",
-              borderRadius: "var(--radius)", color: "var(--fg)",
-              fontFamily: "var(--font-mono), monospace", fontSize: "13px",
-              lineHeight: 1.6, padding: "12px 14px", resize: "none", outline: "none",
-            }}
-          />
-        </div>
-        <div className="split-pane-right" style={{
-          padding: "20px 24px", overflowY: "auto",
-        }}>
-          <PaneLabel>Preview</PaneLabel>
-          <div
-            className="prose"
-            dangerouslySetInnerHTML={{ __html: html }}
-            style={{ maxWidth: "none" }}
-          />
-        </div>
-      </div>
-    </ToolLayout>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <MarkdownPreview />
+    </>
   )
 }
