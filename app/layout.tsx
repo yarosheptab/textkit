@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { DM_Serif_Display, DM_Sans, Geist_Mono } from "next/font/google"
 import Script from "next/script"
+import { Footer } from "@/components/Footer"
+import { CookieConsent } from "@/components/CookieConsent"
 import "./globals.css"
 
 const dmSerif = DM_Serif_Display({
@@ -44,6 +46,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${dmSerif.variable} ${dmSans.variable} ${geistMono.variable}`}>
       <body>
         {children}
+        <Footer />
+        <CookieConsent />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];

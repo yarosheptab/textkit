@@ -32,12 +32,11 @@ export default function AboutPage() {
             <li><strong>Find &amp; Replace</strong> — plain text or regex, highlights matches</li>
             <li><strong>Lorem Ipsum</strong> — generate by words, sentences, or paragraphs</li>
           </ul>
-          <h2>Built by</h2>
+          <h2>Built by Yaro Labs</h2>
           <p>
-            textkit is part of the{" "}
-            <a href="https://yaro-labs.com">Yaro Labs</a>{" "}
-            family of tool-kit sites. Yaro Labs builds custom internal tools and backoffice
-            systems for SaaS teams.
+            textkit is built and maintained by{" "}
+            <a href="https://yaro-labs.com">Yaro Labs</a>.
+            Yaro Labs builds focused web tools and custom internal systems for SaaS teams.
           </p>
         </div>
       </div>
