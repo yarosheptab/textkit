@@ -20,14 +20,6 @@ export default function HomePage() {
       }}>
         {/* Left */}
         <div>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: "6px",
-            fontFamily: "var(--font-sans), system-ui, sans-serif",
-            fontSize: "11px", fontWeight: 500, color: "var(--accent)",
-            background: "var(--accent-light)", border: "1px solid var(--accent-border)",
-            borderRadius: "20px", padding: "3px 10px", marginBottom: "20px",
-          }}>Text utilities</div>
-
           <h1 className="hero-h1" style={{
             fontFamily: "var(--font-serif), Georgia, serif",
             fontSize: "52px", fontWeight: 400, color: "var(--fg)",
